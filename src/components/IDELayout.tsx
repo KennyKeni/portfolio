@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, GripHorizontal, GripVertical, PanelLeftClose, PanelLeft } from 'lucide-react';
+import { GripHorizontal, GripVertical, PanelLeftClose, PanelLeft } from 'lucide-react';
 import { FileBar } from './FileBar';
 import { CodeEditor } from './CodeEditor';
 import { Terminal } from './Terminal';
@@ -9,6 +9,7 @@ import { useFileSystem } from '@/hooks/useFileSystem';
 import { useResizable } from '@/hooks/useResizable';
 import { useHorizontalResizable } from '@/hooks/useHorizontalResizable';
 import { cn } from '@/lib/utils';
+import type { FileNode } from '@/types/portfolio';
 
 export function IDELayout() {
   const { tabs, activeTabId, selectedFileId, openFile, openFileByName, openFileById, closeTab, changeTab } =
@@ -23,7 +24,7 @@ export function IDELayout() {
     if (readmeFile) {
       openFile(readmeFile);
     }
-  }, []);
+  }, [openFile]);
 
   useEffect(() => {
     if (sidebarWidth <= 150 && isFileBarVisible) {
@@ -40,7 +41,7 @@ export function IDELayout() {
     setIsFileBarVisible(!isFileBarVisible);
   };
 
-  const handleFileSelect = (node: any) => {
+  const handleFileSelect = (node: FileNode) => {
     openFile(node);
     if (window.innerWidth < 768) {
       setIsFileBarVisible(false);
