@@ -1,5 +1,6 @@
 import { FileText, Terminal, Code2, RefreshCw, Folder, User, Rocket, Cpu, Briefcase } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { ClickableCard } from '@/components/ui/ClickableCard';
 
 export function ReadmePreview() {
   return (
@@ -17,94 +18,54 @@ export function ReadmePreview() {
         <h2 style={{ color: 'var(--tn-blue)', fontSize: '1.5rem', fontWeight: '600', margin: '0 0 1rem 0', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
           <Folder size={24} /> Explore Portfolio
         </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
-          <a
-            href="file://about"
-            style={{
-              display: 'block',
-              textDecoration: 'none',
-            }}
-          >
-            <Card
-              className="p-6 transition-all duration-200 hover:border-[var(--tn-purple)] hover:bg-[var(--tn-bg)]"
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                <User size={32} style={{ color: 'var(--tn-purple)' }} />
-                <h3 style={{ color: 'var(--tn-purple)', fontSize: '1.125rem', fontWeight: '600', margin: '0' }}>
-                  about.md
-                </h3>
-              </div>
-              <p style={{ color: 'var(--tn-comment)', fontSize: '0.875rem', margin: '0' }}>
-                Learn more about me
-              </p>
-            </Card>
-          </a>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem', gridAutoRows: '1fr' }}>
+          <ClickableCard href="file://about" color="purple">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+              <User size={32} style={{ color: 'var(--tn-purple)' }} />
+              <h3 style={{ color: 'var(--tn-purple)', fontSize: '1.125rem', fontWeight: '600', margin: '0' }}>
+                about.md
+              </h3>
+            </div>
+            <p style={{ color: 'var(--tn-comment)', fontSize: '0.875rem', margin: '0' }}>
+              Learn more about me
+            </p>
+          </ClickableCard>
 
-          <a
-            href="file://projects-folder"
-            style={{
-              display: 'block',
-              textDecoration: 'none',
-            }}
-          >
-            <Card
-              className="p-6 transition-all duration-200 hover:border-[var(--tn-blue)] hover:bg-[var(--tn-bg)]"
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                <Rocket size={32} style={{ color: 'var(--tn-blue)' }} />
-                <h3 style={{ color: 'var(--tn-blue)', fontSize: '1.125rem', fontWeight: '600', margin: '0' }}>
-                  projects/
-                </h3>
-              </div>
-              <p style={{ color: 'var(--tn-comment)', fontSize: '0.875rem', margin: '0' }}>
-                View my projects
-              </p>
-            </Card>
-          </a>
+          <ClickableCard href="file://projects-index" color="blue">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+              <Rocket size={32} style={{ color: 'var(--tn-blue)' }} />
+              <h3 style={{ color: 'var(--tn-blue)', fontSize: '1.125rem', fontWeight: '600', margin: '0' }}>
+                projects/
+              </h3>
+            </div>
+            <p style={{ color: 'var(--tn-comment)', fontSize: '0.875rem', margin: '0' }}>
+              View my projects
+            </p>
+          </ClickableCard>
 
-          <a
-            href="file://skills"
-            style={{
-              display: 'block',
-              textDecoration: 'none',
-            }}
-          >
-            <Card
-              className="p-6 transition-all duration-200 hover:border-[var(--tn-green)] hover:bg-[var(--tn-bg)]"
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                <Cpu size={32} style={{ color: 'var(--tn-green)' }} />
-                <h3 style={{ color: 'var(--tn-green)', fontSize: '1.125rem', fontWeight: '600', margin: '0' }}>
-                  skills.ts
-                </h3>
-              </div>
-              <p style={{ color: 'var(--tn-comment)', fontSize: '0.875rem', margin: '0' }}>
-                Check out my technical skills
-              </p>
-            </Card>
-          </a>
+          <ClickableCard href="file://skills" color="green">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+              <Cpu size={32} style={{ color: 'var(--tn-green)' }} />
+              <h3 style={{ color: 'var(--tn-green)', fontSize: '1.125rem', fontWeight: '600', margin: '0' }}>
+                skills.ts
+              </h3>
+            </div>
+            <p style={{ color: 'var(--tn-comment)', fontSize: '0.875rem', margin: '0' }}>
+              Check out my technical skills
+            </p>
+          </ClickableCard>
 
-          <a
-            href="file://experience"
-            style={{
-              display: 'block',
-              textDecoration: 'none',
-            }}
-          >
-            <Card
-              className="p-6 transition-all duration-200 hover:border-[var(--tn-orange)] hover:bg-[var(--tn-bg)]"
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                <Briefcase size={32} style={{ color: 'var(--tn-orange)' }} />
-                <h3 style={{ color: 'var(--tn-orange)', fontSize: '1.125rem', fontWeight: '600', margin: '0' }}>
-                  experience.json
-                </h3>
-              </div>
-              <p style={{ color: 'var(--tn-comment)', fontSize: '0.875rem', margin: '0' }}>
-                See my work history
-              </p>
-            </Card>
-          </a>
+          <ClickableCard href="file://experience" color="orange">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+              <Briefcase size={32} style={{ color: 'var(--tn-orange)' }} />
+              <h3 style={{ color: 'var(--tn-orange)', fontSize: '1.125rem', fontWeight: '600', margin: '0' }}>
+                experience.json
+              </h3>
+            </div>
+            <p style={{ color: 'var(--tn-comment)', fontSize: '0.875rem', margin: '0' }}>
+              See my work history
+            </p>
+          </ClickableCard>
         </div>
       </div>
 

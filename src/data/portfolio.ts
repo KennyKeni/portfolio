@@ -1,5 +1,5 @@
 import type { PortfolioData, FileNode } from '@/types/portfolio';
-import { AboutPreview, SkillsPreview, ExperiencePreview, ReadmePreview } from '@/components/preview';
+import { AboutPreview, SkillsPreview, ExperiencePreview, ReadmePreview, ProjectsIndexPreview } from '@/components/preview';
 import { createProjectPreviewComponent } from '@/components/preview/ProjectPreviewWrapper';
 
 export const portfolioData: PortfolioData = {
@@ -155,13 +155,36 @@ I specialize in building modern, scalable web applications using cutting-edge te
       id: 'projects-folder',
       name: 'projects',
       type: 'folder',
-      children: portfolioData.projects.map((project, index) => ({
-        id: `project-${index}`,
-        name: `${project.name.toLowerCase().replace(/\s+/g, '-')}.tsx`,
-        type: 'file' as const,
-        extension: '.tsx' as const,
-        language: 'typescript',
-        content: `export const ${project.name.replace(/\s+/g, '')}Project = {
+      children: [
+        {
+          id: 'projects-index',
+          name: 'index.ts',
+          type: 'file' as const,
+          extension: '.ts' as const,
+          language: 'typescript',
+          content: `// Projects Index
+// Click on any project file to view details
+
+export const projects = [
+${portfolioData.projects.map((project, index) => `  {
+    id: ${index},
+    name: "${project.name}",
+    description: "${project.description}",
+    file: "./${project.name.toLowerCase().replace(/\s+/g, '-')}.tsx"
+  }`).join(',\n')}
+];
+
+export { ${portfolioData.projects.map(p => `${p.name.replace(/\s+/g, '')}Project`).join(', ')} } from './exports';
+`,
+          previewComponent: ProjectsIndexPreview
+        },
+        ...portfolioData.projects.map((project, index) => ({
+          id: `project-${index}`,
+          name: `${project.name.toLowerCase().replace(/\s+/g, '-')}.tsx`,
+          type: 'file' as const,
+          extension: '.tsx' as const,
+          language: 'typescript',
+          content: `export const ${project.name.replace(/\s+/g, '')}Project = {
   name: "${project.name}",
   description: "${project.description}",
 
@@ -195,8 +218,9 @@ ${project.github ? `## Links\n- [GitHub Repository](${project.github})` : ''}
 ${project.link ? `- [Live Demo](${project.link})` : ''}
 */
 `,
-        previewComponent: createProjectPreviewComponent(project)
-      }))
+          previewComponent: createProjectPreviewComponent(project)
+        }))
+      ]
     },
     {
       id: 'skills',

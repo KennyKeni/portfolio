@@ -182,8 +182,8 @@ export function CodeEditor({ tabs, activeTabId, onTabChange, onTabClose, onFileO
         </div>
 
         {activeTab && (
-          <div className="flex items-center gap-3 px-4 border-l cursor-pointer" style={{ borderColor: 'var(--tn-border)' }} onClick={toggleViewMode}>
-            <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3 px-4 border-l" style={{ borderColor: 'var(--tn-border)' }}>
+            <div className="flex items-center gap-2 cursor-pointer" onClick={toggleViewMode}>
               <FileText
                 className="h-4 w-4"
                 style={{ color: currentViewMode === 'raw' ? 'var(--tn-green)' : 'var(--tn-comment)' }}
@@ -197,7 +197,7 @@ export function CodeEditor({ tabs, activeTabId, onTabChange, onTabClose, onFileO
               onCheckedChange={toggleViewMode}
               className="data-[state=checked]:bg-[var(--tn-blue)] data-[state=unchecked]:bg-[var(--tn-green)]"
             />
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 cursor-pointer" onClick={toggleViewMode}>
               <span className="text-xs font-medium" style={{ color: currentViewMode === 'code' ? 'var(--tn-blue)' : 'var(--tn-comment)' }}>
                 Source
               </span>
