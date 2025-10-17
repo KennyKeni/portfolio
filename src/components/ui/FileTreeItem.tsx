@@ -26,6 +26,7 @@ const getFileIcon = (node: FileNode, isExpanded: boolean) => {
     '.tsx': 'var(--tn-blue)',
     '.json': 'var(--tn-yellow)',
     '.js': 'var(--tn-yellow)',
+    '.py': 'var(--tn-green)',
   };
 
   const iconColor = node.extension ? (iconColorMap[node.extension] || 'var(--tn-fg)') : 'var(--tn-fg)';
