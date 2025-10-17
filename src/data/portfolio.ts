@@ -40,7 +40,7 @@ export const portfolioData: PortfolioData = {
       ]
     },
     {
-      name: 'Breast Cancer Detection',
+      name: 'Breast Cancer CNN',
       description: 'Deep learning model for medical image analysis using CNNs to detect breast cancer from mammograms.',
       technologies: ['Python', 'PyTorch', 'Pandas', 'scikit-learn', 'OpenCV'],
       github: 'https://github.com/keni344/breast-cancer-detection',
@@ -48,6 +48,21 @@ export const portfolioData: PortfolioData = {
         'Achieved 82% accuracy in breast cancer detection using CNN and PyTorch',
         'Implemented transfer learning with EfficientNet and Inception-ResNet-v2, improving performance by 20%',
         'Preprocessed mammograms with CLAHE and Canny Edge Detection, enhancing model accuracy by 20%'
+      ],
+      fileExtension: '.py',
+      language: 'python'
+    },
+    {
+      name: 'iCAN',
+      description: 'Gamified web application to improve medication adherence in children participating in clinical trials through virtual pet care mechanics.',
+      technologies: ['TypeScript', 'Next.js', 'React', 'MongoDB', 'Tailwind CSS', 'Docker'],
+      github: 'https://github.com/GTBitsOfGood/ican',
+      link: 'https://main--bog-ican.netlify.app',
+      highlights: [
+        'Built web-based application in collaboration with iCAN nonprofit and team of seven developers',
+        'Implemented gamification system with virtual pet care tied to medication adherence tracking',
+        'Created RESTful API integration layer and service abstraction patterns for seamless frontend-backend communication',
+        'Developed complex UI components using Tailwind CSS and React to enhance user experience and maintainability'
       ]
     }
   ],
