@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import type { ReactNode, CSSProperties } from 'react';
 import { Card } from './card';
 
 interface ClickableCardProps {
@@ -12,6 +12,7 @@ export function ClickableCard({ href, color, children, className = '' }: Clickab
   return (
     <a
       href={href}
+      className="group"
       style={{
         display: 'block',
         textDecoration: 'none',
@@ -19,16 +20,19 @@ export function ClickableCard({ href, color, children, className = '' }: Clickab
       }}
     >
       <Card
-        className={`p-6 transition-all duration-200 cursor-pointer ${className}`}
-        style={{
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          transition: 'all 0.2s',
-        }}
+        className={`p-6 cursor-pointer ${className}`}
+        style={
+          {
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            transition: 'all 0.2s',
+            '--hover-color': `var(--tn-${color})`,
+          } as CSSProperties
+        }
         onMouseOver={(e) => {
-          e.currentTarget.style.borderColor = `var(--tn-${color})`;
-          e.currentTarget.style.background = 'var(--tn-bg)';
+          e.currentTarget.style.borderColor = `var(--hover-color)`;
+          e.currentTarget.style.background = 'var(--tn-bg-highlight)';
           e.currentTarget.style.boxShadow = '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)';
         }}
         onMouseOut={(e) => {

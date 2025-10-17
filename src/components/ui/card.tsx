@@ -2,7 +2,7 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+function Card({ className, style, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="card"
@@ -15,6 +15,7 @@ function Card({ className, ...props }: React.ComponentProps<"div">) {
         borderColor: 'var(--tn-border)',
         borderRadius: '0',
         color: 'var(--tn-fg)',
+        ...style,
       }}
       {...props}
     />
