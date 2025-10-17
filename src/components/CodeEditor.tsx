@@ -239,7 +239,7 @@ export function CodeEditor({ tabs, activeTabId, onTabChange, onTabClose, onFileO
         )}
       </div>
 
-      <ScrollArea className="flex-1 min-h-0 code-editor-scroll">
+      <ScrollArea className={`flex-1 min-h-0 ${currentViewMode === 'code' ? 'code-editor-scroll' : ''}`}>
         <div ref={contentRef} style={{ height: '100%' }}>{renderContent()}</div>
       </ScrollArea>
     </div>
