@@ -1,0 +1,142 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Tokyo Night Color Palette */
+  --tn-bg: #1a1b26;
+  --tn-bg-dark: #16161e;
+  --tn-bg-highlight: #24283b;
+  --tn-terminal: #1f2335;
+  --tn-fg: #c0caf5;
+  --tn-fg-dark: #a9b1d6;
+  --tn-comment: #565f89;
+  --tn-selection: #283457;
+  --tn-border: #414868;
+
+  /* Syntax Colors */
+  --tn-red: #f7768e;
+  --tn-orange: #ff9e64;
+  --tn-yellow: #e0af68;
+  --tn-green: #9ece6a;
+  --tn-cyan: #7dcfff;
+  --tn-blue: #7aa2f7;
+  --tn-purple: #bb9af7;
+  --tn-magenta: #c792ea;
+
+  /* Semantic Mappings */
+  --background: var(--tn-bg);
+  --foreground: var(--tn-fg);
+  --card: var(--tn-bg-highlight);
+  --card-foreground: var(--tn-fg);
+  --popover: var(--tn-bg-highlight);
+  --popover-foreground: var(--tn-fg);
+  --primary: var(--tn-blue);
+  --primary-foreground: var(--tn-bg);
+  --secondary: var(--tn-bg-highlight);
+  --secondary-foreground: var(--tn-fg);
+  --muted: var(--tn-bg-highlight);
+  --muted-foreground: var(--tn-comment);
+  --accent: var(--tn-purple);
+  --accent-foreground: var(--tn-bg);
+  --destructive: var(--tn-red);
+  --destructive-foreground: var(--tn-bg);
+  --border: var(--tn-border);
+  --input: var(--tn-border);
+  --ring: var(--tn-blue);
+
+  /* Sidebar */
+  --sidebar: var(--tn-bg-dark);
+  --sidebar-foreground: var(--tn-fg);
+  --sidebar-primary: var(--tn-blue);
+  --sidebar-primary-foreground: var(--tn-bg);
+  --sidebar-accent: var(--tn-selection);
+  --sidebar-accent-foreground: var(--tn-fg);
+  --sidebar-border: var(--tn-border);
+  --sidebar-ring: var(--tn-blue);
+
+  /* Chart colors */
+  --chart-1: var(--tn-blue);
+  --chart-2: var(--tn-cyan);
+  --chart-3: var(--tn-purple);
+  --chart-4: var(--tn-green);
+  --chart-5: var(--tn-yellow);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Fira Code', 'JetBrains Mono', 'Consolas', 'Monaco', 'Courier New', monospace;
+    overflow: hidden;
+  }
+
+  /* Custom Scrollbar - Tokyo Night Theme */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--tn-bg-dark);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--tn-comment);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--tn-border);
+  }
+
+  /* Firefox Scrollbar */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--tn-comment) var(--tn-bg-dark);
+  }
+}

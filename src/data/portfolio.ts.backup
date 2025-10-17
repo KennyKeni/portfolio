@@ -1,0 +1,747 @@
+import type { PortfolioData, FileNode } from '@/types/portfolio';
+import { AboutPreview, ProjectPreview, SkillsPreview, ExperiencePreview, ReadmePreview } from '@/components/preview';
+
+export const portfolioData: PortfolioData = {
+  about: {
+    name: 'Kenny Lin',
+    title: 'Full Stack Developer & ML Researcher',
+    bio: 'Computer Science student at Georgia Institute of Technology with a 4.0 GPA, pursuing a concurrent B.S./M.S. program. Passionate about building scalable systems, machine learning applications, and creating impactful software solutions.',
+    location: 'New York, NY',
+    email: 'linkenny777@gmail.com',
+    github: 'kennykeni',
+    linkedin: 'kennylin344',
+    website: 'https://yourwebsite.com'
+  },
+
+  projects: [
+    {
+      name: 'Agentic RAG System',
+      description: 'A near real-time agentic RAG FastAPI backend with advanced retrieval techniques for accurate question answering.',
+      technologies: ['Python', 'GoLang', 'FastAPI', 'Llamaindex', 'Qdrant', 'SqlAlchemy', 'Docker'],
+      github: 'https://github.com/keni344/agentic-rag',
+      highlights: [
+        'Developed agentic RAG system with semantic search, hybrid search, and reranking capabilities',
+        'Implemented vector search using Qdrant for improved retrieval accuracy',
+        'Deployed dockerized FastAPI backend on VPS, reducing operating costs by 60%'
+      ]
+    },
+    {
+      name: 'Pokemon Wikipedia Website',
+      description: 'Fully responsive Pokedex web application with scalable backend architecture and optimized caching.',
+      technologies: ['TypeScript', 'React', 'NestJS', 'PostgreSQL', 'Node.js', 'Tailwind CSS', 'Redis'],
+      github: 'https://github.com/keni344/pokemon-wiki',
+      highlights: [
+        'Created responsive UI using React and TypeScript for mobile and desktop devices',
+        'Developed scalable backend with NestJS, implementing Redis caching for API requests',
+        'Enhanced performance with incremental site regeneration and Cloudflare caching, improving load times by 50%'
+      ]
+    },
+    {
+      name: 'Breast Cancer Detection',
+      description: 'Deep learning model for medical image analysis using CNNs to detect breast cancer from mammograms.',
+      technologies: ['Python', 'PyTorch', 'Pandas', 'scikit-learn', 'OpenCV'],
+      github: 'https://github.com/keni344/breast-cancer-detection',
+      highlights: [
+        'Achieved 82% accuracy in breast cancer detection using CNN and PyTorch',
+        'Implemented transfer learning with EfficientNet and Inception-ResNet-v2, improving performance by 20%',
+        'Preprocessed mammograms with CLAHE and Canny Edge Detection, enhancing model accuracy by 20%'
+      ]
+    }
+  ],
+
+  skills: [
+    {
+      category: 'Languages',
+      items: ['Python', 'JavaScript', 'TypeScript', 'Java', 'Kotlin', 'Go', 'C', 'C++', 'C#', 'SQL', 'HTML/CSS', 'Assembly']
+    },
+    {
+      category: 'Frameworks & Libraries',
+      items: ['React', 'Next.js', 'Express.js', 'NestJS', 'FastAPI', 'PyTorch', 'TensorFlow', 'LlamaIndex', 'NumPy', 'Tailwind CSS']
+    },
+    {
+      category: 'Databases & Cloud',
+      items: ['PostgreSQL', 'MySQL', 'MongoDB', 'Redis', 'NoSQL', 'AWS', 'SQS', 'S3', 'CloudWatch', 'Vector Databases', 'Qdrant']
+    },
+    {
+      category: 'Tools & Technologies',
+      items: ['Git', 'Docker', 'Linux', 'Unix', 'Bash', 'RESTful APIs', 'GraphQL', 'Microservices', 'CI/CD']
+    },
+    {
+      category: 'Machine Learning',
+      items: ['PyTorch', 'TensorFlow', 'Transfer Learning', 'CNN', 'Object Detection', 'Co-DETR', 'LlamaIndex', 'RAG Systems']
+    }
+  ],
+
+  experience: [
+    {
+      title: 'Software Engineering Intern',
+      company: 'Viasat',
+      period: 'May 2025 - Aug 2025',
+      description: 'Automated customer order validation and fulfillment using cloud-native architecture and AWS services.',
+      achievements: [
+        'Automated customer order validation with AWS SQS and parallel processing, increasing processing speed by 300%',
+        'Implemented distributed system with concurrent worker processes, reducing processing time from 4 hours to 10 minutes',
+        'Designed GraphQL API endpoints and integrated AWS services (SQS, S3, CloudWatch) for real-time batch monitoring',
+        'Replaced manual workflows with Python batch processing tool leveraging cloud-native architecture'
+      ],
+      technologies: ['Python', 'AWS', 'SQS', 'S3', 'CloudWatch', 'GraphQL']
+    },
+    {
+      title: 'Full Stack Developer',
+      company: 'Bits of Good',
+      period: 'Jan 2024 - Present',
+      description: 'Developed web application for non-profit iCAN to gamify medication adherence for children in clinical trials.',
+      achievements: [
+        'Built web-based application in collaboration with iCAN and team of seven to improve engagement and habit formation',
+        'Implemented complex UI elements using Tailwind CSS and React to enhance user experience and maintainability',
+        'Created RESTful API integration layer and service abstraction patterns for seamless frontend-backend communication',
+        'Implemented HTTP client services and state management for efficient data flow'
+      ],
+      technologies: ['React', 'TypeScript', 'Tailwind CSS', 'RESTful APIs', 'State Management']
+    },
+    {
+      title: 'Machine Learning Undergraduate Researcher',
+      company: 'Intelligent Digital Communications',
+      period: 'Aug 2024 - Present',
+      description: 'Developed near real-time system for identifying and triangulating wireless users in signal-dense environments.',
+      achievements: [
+        'Collaborated with professor and peers to develop wireless user identification and triangulation system',
+        'Applied transfer learning to state-of-the-art Co-DETR models for wireless signal detection',
+        'Achieved 85% accuracy on wireless signal detection in signal-dense environments',
+        'Worked on near real-time processing for drone and wireless device identification'
+      ],
+      technologies: ['Python', 'PyTorch', 'Co-DETR', 'Transfer Learning', 'Signal Processing']
+    }
+  ]
+};
+
+export const fileTree: FileNode = {
+  id: 'root',
+  name: 'portfolio',
+  type: 'folder',
+  children: [
+    {
+      id: 'about',
+      name: 'about.md',
+      type: 'file',
+      extension: '.md',
+      language: 'markdown',
+      content: `# ${portfolioData.about.name}
+
+## ${portfolioData.about.title}
+
+${portfolioData.about.bio}
+
+### Contact Information
+- **Location:** ${portfolioData.about.location}
+- **Email:** ${portfolioData.about.email}
+- **GitHub:** [@${portfolioData.about.github}](https://github.com/${portfolioData.about.github})
+- **LinkedIn:** [linkedin.com/in/${portfolioData.about.linkedin}](https://linkedin.com/in/${portfolioData.about.linkedin})
+- **Website:** [${portfolioData.about.website}](${portfolioData.about.website})
+
+### What I Do
+I specialize in building modern, scalable web applications using cutting-edge technologies. My approach combines clean code principles with pragmatic problem-solving to deliver high-quality software that makes a difference.
+
+### Currently
+- Building distributed systems at scale
+- Exploring AI/ML integration in web applications
+- Contributing to open-source projects
+- Mentoring aspiring developers
+`,
+      previewComponent: AboutPreview
+    },
+        <div style="font-family: system-ui; line-height: 1.6; max-width: 900px; margin: 0 auto;">
+          <div style="background: var(--tn-bg-dark); border: 1px solid var(--tn-border); border-radius: 0.25rem; padding: 2.5rem; margin-bottom: 1.5rem;">
+            <div style="margin-bottom: 1.5rem;">
+              <div style="color: var(--tn-green); font-size: 0.875rem; margin-bottom: 0.5rem;">$ cat about.txt</div>
+              <h1 style="color: var(--tn-purple); font-size: 2.5rem; font-weight: 700; margin: 0 0 0.5rem 0;">
+                ${portfolioData.about.name}
+              </h1>
+              <p style="color: var(--tn-blue); font-size: 1.25rem; font-weight: 500; margin: 0 0 1.5rem 0;">
+                ${portfolioData.about.title}
+              </p>
+              <p style="color: var(--tn-fg); margin: 0; line-height: 1.7;">
+                ${portfolioData.about.bio}
+              </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--tn-border);">
+              <div>
+                <div style="color: var(--tn-comment); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.5rem;">Location</div>
+                <div style="color: var(--tn-fg); display: flex; align-items: center; gap: 0.5rem;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                  ${portfolioData.about.location}
+                </div>
+              </div>
+              <div>
+                <div style="color: var(--tn-comment); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 0.5rem;">Email</div>
+                <a href="mailto:${portfolioData.about.email}" style="color: var(--tn-blue); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  ${portfolioData.about.email}
+                </a>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem; flex-wrap: wrap;">
+              <a href="https://github.com/${portfolioData.about.github}" target="_blank" rel="noopener noreferrer" style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.625rem 1.25rem;
+                background: var(--tn-bg-highlight);
+                border: 1px solid var(--tn-border);
+                border-radius: 0.25rem;
+                color: var(--tn-fg);
+                text-decoration: none;
+                font-size: 0.875rem;
+                transition: border-color 0.2s;
+              " onmouseover="this.style.borderColor='var(--tn-blue)'" onmouseout="this.style.borderColor='var(--tn-border)'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                GitHub
+              </a>
+              <a href="https://linkedin.com/in/${portfolioData.about.linkedin}" target="_blank" rel="noopener noreferrer" style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.625rem 1.25rem;
+                background: var(--tn-bg-highlight);
+                border: 1px solid var(--tn-border);
+                border-radius: 0.25rem;
+                color: var(--tn-fg);
+                text-decoration: none;
+                font-size: 0.875rem;
+                transition: border-color 0.2s;
+              " onmouseover="this.style.borderColor='var(--tn-blue)'" onmouseout="this.style.borderColor='var(--tn-border)'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+              <a href="${portfolioData.about.website}" target="_blank" rel="noopener noreferrer" style="
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                padding: 0.625rem 1.25rem;
+                background: var(--tn-bg-highlight);
+                border: 1px solid var(--tn-border);
+                border-radius: 0.25rem;
+                color: var(--tn-fg);
+                text-decoration: none;
+                font-size: 0.875rem;
+                transition: border-color 0.2s;
+              " onmouseover="this.style.borderColor='var(--tn-blue)'" onmouseout="this.style.borderColor='var(--tn-border)'">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+                Website
+              </a>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+            <div style="background: var(--tn-bg-dark); border: 1px solid var(--tn-border); border-radius: 0.25rem; padding: 1.75rem;">
+              <h3 style="color: var(--tn-purple); font-size: 1.25rem; font-weight: 600; margin: 0 0 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                What I Do
+              </h3>
+              <p style="color: var(--tn-fg); margin: 0; line-height: 1.7;">
+                I specialize in building modern, scalable web applications using cutting-edge technologies. My approach combines clean code principles with pragmatic problem-solving to deliver high-quality software that makes a difference.
+              </p>
+            </div>
+
+            <div style="background: var(--tn-bg-dark); border: 1px solid var(--tn-border); border-radius: 0.25rem; padding: 1.75rem;">
+              <h3 style="color: var(--tn-blue); font-size: 1.25rem; font-weight: 600; margin: 0 0 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg>
+                Currently
+              </h3>
+              <ul style="color: var(--tn-fg); margin: 0; padding-left: 1.25rem; line-height: 1.8;">
+                <li>Building distributed systems at scale</li>
+                <li>Exploring AI/ML integration in web applications</li>
+                <li>Contributing to open-source projects</li>
+                <li>Mentoring aspiring developers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      `
+    },
+    {
+      id: 'projects-folder',
+      name: 'projects',
+      type: 'folder',
+      children: portfolioData.projects.map((project, index) => ({
+        id: `project-${index}`,
+        name: `${project.name.toLowerCase().replace(/\s+/g, '-')}.tsx`,
+        type: 'file' as const,
+        extension: '.tsx' as const,
+        language: 'typescript',
+        content: `export const ${project.name.replace(/\s+/g, '')}Project = {
+  name: "${project.name}",
+  description: "${project.description}",
+
+  technologies: [
+    ${project.technologies.map(tech => `"${tech}"`).join(',\n    ')}
+  ],
+
+  links: {
+    ${project.github ? `github: "${project.github}",` : ''}
+    ${project.link ? `demo: "${project.link}"` : ''}
+  },
+
+  highlights: [
+    ${project.highlights.map(h => `"${h}"`).join(',\n    ')}
+  ]
+};
+
+// Project README
+/*
+# ${project.name}
+
+${project.description}
+
+## Key Features
+${project.highlights.map(h => `- ${h}`).join('\n')}
+
+## Tech Stack
+${project.technologies.join(' • ')}
+
+${project.github ? `## Links\n- [GitHub Repository](${project.github})` : ''}
+${project.link ? `- [Live Demo](${project.link})` : ''}
+*/
+`,
+        previewHtml: `
+          <div style="font-family: system-ui; line-height: 1.6; max-width: 900px; margin: 0 auto;">
+            <div style="background: var(--tn-bg-dark); border: 1px solid var(--tn-border); border-radius: 0.75rem; padding: 2rem;">
+              <div style="display: flex; align-items: start; justify-between; margin-bottom: 1.5rem; gap: 1rem; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 250px;">
+                  <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem;">
+                    <span style="font-size: 1.5rem;">📁</span>
+                    <h1 style="color: var(--tn-blue); font-size: 1.75rem; font-weight: 700; margin: 0;">
+                      ${project.name}
+                    </h1>
+                  </div>
+                  <p style="color: var(--tn-fg); margin: 0; line-height: 1.7; font-size: 1rem;">
+                    ${project.description}
+                  </p>
+                </div>
+                <div style="display: flex; gap: 0.5rem; flex-shrink: 0;">
+                  ${project.github ? `
+                    <a href="${project.github}" target="_blank" rel="noopener noreferrer" style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      width: 2.5rem;
+                      height: 2.5rem;
+                      background: var(--tn-bg-highlight);
+                      border: 1px solid var(--tn-border);
+                      border-radius: 0.5rem;
+                      color: var(--tn-fg);
+                      text-decoration: none;
+                      transition: border-color 0.2s;
+                      font-size: 1.2rem;
+                    " onmouseover="this.style.borderColor='var(--tn-green)'; this.style.background='var(--tn-bg)'" onmouseout="this.style.borderColor='var(--tn-border)'; this.style.background='var(--tn-bg-highlight)'">
+                      🐙
+                    </a>
+                  ` : ''}
+                  ${project.link ? `
+                    <a href="${project.link}" target="_blank" rel="noopener noreferrer" style="
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      width: 2.5rem;
+                      height: 2.5rem;
+                      background: var(--tn-bg-highlight);
+                      border: 1px solid var(--tn-border);
+                      border-radius: 0.5rem;
+                      color: var(--tn-fg);
+                      text-decoration: none;
+                      transition: border-color 0.2s;
+                      font-size: 1.2rem;
+                    " onmouseover="this.style.borderColor='var(--tn-blue)'; this.style.background='var(--tn-bg)'" onmouseout="this.style.borderColor='var(--tn-border)'; this.style.background='var(--tn-bg-highlight)'">
+                      🔗
+                    </a>
+                  ` : ''}
+                </div>
+              </div>
+
+              <div style="margin-bottom: 1.5rem;">
+                <h3 style="color: var(--tn-purple); font-size: 1rem; font-weight: 600; margin: 0 0 0.75rem 0; text-transform: uppercase; letter-spacing: 0.05em;">
+                  Tech Stack
+                </h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                  ${project.technologies.map(tech => `
+                    <span style="
+                      background: var(--tn-bg-highlight);
+                      color: var(--tn-green);
+                      padding: 0.375rem 0.875rem;
+                      border-radius: 0.375rem;
+                      border: 1px solid var(--tn-border);
+                      font-size: 0.875rem;
+                      font-weight: 500;
+                      font-family: monospace;
+                    ">${tech}</span>
+                  `).join('')}
+                </div>
+              </div>
+
+              <div>
+                <h3 style="color: var(--tn-purple); font-size: 1rem; font-weight: 600; margin: 0 0 0.75rem 0; text-transform: uppercase; letter-spacing: 0.05em;">
+                  Key Highlights
+                </h3>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                  ${project.highlights.map(highlight => `
+                    <div style="display: flex; gap: 0.75rem; align-items: start;">
+                      <span style="color: var(--tn-green); font-size: 1.25rem; line-height: 1.5; flex-shrink: 0;">▸</span>
+                      <p style="color: var(--tn-fg); margin: 0; line-height: 1.6;">
+                        ${highlight}
+                      </p>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+        `
+      }))
+    },
+    {
+      id: 'skills',
+      name: 'skills.ts',
+      type: 'file',
+      extension: '.ts',
+      language: 'typescript',
+      content: `export interface SkillSet {
+  category: string;
+  items: string[];
+  proficiency?: 'beginner' | 'intermediate' | 'advanced' | 'expert';
+}
+
+export const skills: SkillSet[] = [
+${portfolioData.skills.map(skill => `  {
+    category: "${skill.category}",
+    items: [${skill.items.map(item => `"${item}"`).join(', ')}],
+    proficiency: "advanced"
+  }`).join(',\n')}
+];
+
+export const getSkillsByCategory = (category: string): string[] => {
+  const skillSet = skills.find(s => s.category === category);
+  return skillSet?.items || [];
+};
+
+export const getAllSkills = (): string[] => {
+  return skills.flatMap(s => s.items);
+};
+`,
+      previewHtml: `
+        <div style="font-family: system-ui; line-height: 1.6;">
+          <h1 style="color: var(--tn-purple); font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;">
+            💻 Technical Skills
+          </h1>
+          ${portfolioData.skills.map(skill => `
+            <div style="margin-bottom: 2rem;">
+              <h2 style="color: var(--tn-blue); font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-size: 1.2rem;">▸</span> ${skill.category}
+              </h2>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                ${skill.items.map(item => `
+                  <span style="
+                    background: var(--tn-bg-highlight);
+                    color: var(--tn-green);
+                    padding: 0.375rem 0.75rem;
+                    border-radius: 0.375rem;
+                    border: 1px solid var(--tn-border);
+                    font-size: 0.875rem;
+                    font-weight: 500;
+                  ">${item}</span>
+                `).join('')}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `
+    },
+    {
+      id: 'experience',
+      name: 'experience.json',
+      type: 'file',
+      extension: '.json',
+      language: 'json',
+      content: JSON.stringify({
+        experience: portfolioData.experience.map(exp => ({
+          title: exp.title,
+          company: exp.company,
+          period: exp.period,
+          description: exp.description,
+          achievements: exp.achievements,
+          technologies: exp.technologies
+        }))
+      }, null, 2),
+      previewHtml: `
+        <div style="font-family: system-ui; line-height: 1.6; max-width: 900px; margin: 0 auto;">
+          <h1 style="color: var(--tn-purple); font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem;">
+            <span style="font-size: 1.75rem;">💼</span> Work Experience
+          </h1>
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            ${portfolioData.experience.map(exp => `
+              <div style="background: var(--tn-bg-dark); border: 1px solid var(--tn-border); border-radius: 0.75rem; padding: 1.75rem;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem; gap: 1rem; flex-wrap: wrap;">
+                  <div style="flex: 1; min-width: 250px;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+                      <span style="color: var(--tn-blue); font-size: 1.1rem;">🏢</span>
+                      <h3 style="color: var(--tn-blue); font-size: 1.25rem; font-weight: 600; margin: 0;">
+                        ${exp.company}
+                      </h3>
+                    </div>
+                    <p style="color: var(--tn-fg); font-size: 1.1rem; font-weight: 500; margin: 0;">
+                      ${exp.title}
+                    </p>
+                  </div>
+                  <div style="color: var(--tn-comment); font-size: 0.875rem; white-space: nowrap;">
+                    📅 ${exp.period}
+                  </div>
+                </div>
+
+                <p style="color: var(--tn-fg); margin: 0 0 1.25rem 0; line-height: 1.7;">
+                  ${exp.description}
+                </p>
+
+                <div style="margin-bottom: 1.25rem;">
+                  <h4 style="color: var(--tn-purple); font-size: 0.875rem; font-weight: 600; margin: 0 0 0.75rem 0; text-transform: uppercase; letter-spacing: 0.05em;">
+                    Key Achievements
+                  </h4>
+                  <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    ${exp.achievements.map(achievement => `
+                      <div style="display: flex; gap: 0.75rem; align-items: start;">
+                        <span style="color: var(--tn-green); font-size: 1rem; line-height: 1.6; flex-shrink: 0;">✓</span>
+                        <p style="color: var(--tn-fg); margin: 0; line-height: 1.6; font-size: 0.9rem;">
+                          ${achievement}
+                        </p>
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+
+                <div>
+                  <h4 style="color: var(--tn-purple); font-size: 0.875rem; font-weight: 600; margin: 0 0 0.75rem 0; text-transform: uppercase; letter-spacing: 0.05em;">
+                    Technologies
+                  </h4>
+                  <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                    ${exp.technologies.map(tech => `
+                      <span style="
+                        background: var(--tn-bg-highlight);
+                        color: var(--tn-green);
+                        padding: 0.25rem 0.75rem;
+                        border-radius: 0.375rem;
+                        border: 1px solid var(--tn-border);
+                        font-size: 0.8rem;
+                        font-weight: 500;
+                        font-family: monospace;
+                      ">${tech}</span>
+                    `).join('')}
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `
+    },
+    {
+      id: 'readme',
+      name: 'README.md',
+      type: 'file',
+      extension: '.md',
+      language: 'markdown',
+      content: `# Portfolio
+
+Welcome to my portfolio! This is an IDE-themed portfolio website built with React, TypeScript, and Tailwind CSS.
+
+## Navigation
+
+Use the file tree on the left to explore different sections:
+- [**about.md**](file://about) - Learn more about me
+- [**projects/**](file://projects-folder) - View my projects
+- [**skills.ts**](file://skills) - Check out my technical skills
+- [**experience.json**](file://experience) - See my work history
+
+## Terminal Commands
+
+Try these commands in the terminal below:
+- \`help\` - Show available commands
+- \`about\` - Display about information
+- \`projects\` - List all projects
+- \`skills\` - Show skills
+- \`experience\` - View work experience
+- \`clear\` - Clear terminal
+- \`ls\` - List files
+
+## Toggle Views
+
+Use the **Code/Raw** toggle in the editor to switch between:
+- **Code view**: Syntax-highlighted source code
+- **Raw view**: Rendered/formatted content
+
+---
+
+Built with React + TypeScript + Tailwind CSS + Tokyo Night theme
+`,
+      previewHtml: `
+        <div style="font-family: system-ui; line-height: 1.6; max-width: 900px; margin: 0 auto;">
+          <div style="background: var(--tn-bg-dark); border: 1px solid var(--tn-border); border-radius: 0.75rem; padding: 2.5rem; margin-bottom: 2rem; text-align: center;">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">👋</div>
+            <h1 style="color: var(--tn-purple); font-size: 2.5rem; font-weight: 700; margin: 0 0 1rem 0;">
+              Welcome to My Portfolio
+            </h1>
+            <p style="color: var(--tn-fg); font-size: 1.125rem; margin: 0; line-height: 1.7;">
+              An IDE-themed portfolio website built with React, TypeScript, and Tailwind CSS
+            </p>
+          </div>
+
+          <div style="margin-bottom: 2rem;">
+            <h2 style="color: var(--tn-blue); font-size: 1.5rem; font-weight: 600; margin: 0 0 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <span>📂</span> Explore Portfolio
+            </h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+              <a href="file://about" style="
+                display: block;
+                background: var(--tn-bg-dark);
+                border: 1px solid var(--tn-border);
+                border-radius: 0.75rem;
+                padding: 1.5rem;
+                text-decoration: none;
+                transition: border-color 0.2s, background 0.2s;
+              " onmouseover="this.style.borderColor='var(--tn-purple)'; this.style.background='var(--tn-bg)'" onmouseout="this.style.borderColor='var(--tn-border)'; this.style.background='var(--tn-bg-dark)'">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">👤</div>
+                <h3 style="color: var(--tn-purple); font-size: 1.125rem; font-weight: 600; margin: 0 0 0.5rem 0;">
+                  about.md
+                </h3>
+                <p style="color: var(--tn-comment); font-size: 0.875rem; margin: 0;">
+                  Learn more about me
+                </p>
+              </a>
+
+              <a href="file://projects-folder" style="
+                display: block;
+                background: var(--tn-bg-dark);
+                border: 1px solid var(--tn-border);
+                border-radius: 0.75rem;
+                padding: 1.5rem;
+                text-decoration: none;
+                transition: border-color 0.2s, background 0.2s;
+              " onmouseover="this.style.borderColor='var(--tn-blue)'; this.style.background='var(--tn-bg)'" onmouseout="this.style.borderColor='var(--tn-border)'; this.style.background='var(--tn-bg-dark)'">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🚀</div>
+                <h3 style="color: var(--tn-blue); font-size: 1.125rem; font-weight: 600; margin: 0 0 0.5rem 0;">
+                  projects/
+                </h3>
+                <p style="color: var(--tn-comment); font-size: 0.875rem; margin: 0;">
+                  View my projects
+                </p>
+              </a>
+
+              <a href="file://skills" style="
+                display: block;
+                background: var(--tn-bg-dark);
+                border: 1px solid var(--tn-border);
+                border-radius: 0.75rem;
+                padding: 1.5rem;
+                text-decoration: none;
+                transition: border-color 0.2s, background 0.2s;
+              " onmouseover="this.style.borderColor='var(--tn-green)'; this.style.background='var(--tn-bg)'" onmouseout="this.style.borderColor='var(--tn-border)'; this.style.background='var(--tn-bg-dark)'">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">💻</div>
+                <h3 style="color: var(--tn-green); font-size: 1.125rem; font-weight: 600; margin: 0 0 0.5rem 0;">
+                  skills.ts
+                </h3>
+                <p style="color: var(--tn-comment); font-size: 0.875rem; margin: 0;">
+                  Check out my technical skills
+                </p>
+              </a>
+
+              <a href="file://experience" style="
+                display: block;
+                background: var(--tn-bg-dark);
+                border: 1px solid var(--tn-border);
+                border-radius: 0.75rem;
+                padding: 1.5rem;
+                text-decoration: none;
+                transition: border-color 0.2s, background 0.2s;
+              " onmouseover="this.style.borderColor='var(--tn-orange)'; this.style.background='var(--tn-bg)'" onmouseout="this.style.borderColor='var(--tn-border)'; this.style.background='var(--tn-bg-dark)'">
+                <div style="font-size: 2rem; margin-bottom: 0.5rem;">💼</div>
+                <h3 style="color: var(--tn-orange); font-size: 1.125rem; font-weight: 600; margin: 0 0 0.5rem 0;">
+                  experience.json
+                </h3>
+                <p style="color: var(--tn-comment); font-size: 0.875rem; margin: 0;">
+                  See my work history
+                </p>
+              </a>
+            </div>
+          </div>
+
+          <div style="margin-bottom: 2rem;">
+            <h2 style="color: var(--tn-blue); font-size: 1.5rem; font-weight: 600; margin: 0 0 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <span>⌨️</span> Terminal Commands
+            </h2>
+            <div style="background: var(--tn-bg-dark); border: 1px solid var(--tn-border); border-radius: 0.75rem; padding: 1.5rem;">
+              <div style="color: var(--tn-green); font-size: 0.875rem; margin-bottom: 1rem;">$ help</div>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0.75rem; font-family: monospace; font-size: 0.875rem;">
+                <div style="display: flex; gap: 0.75rem;">
+                  <span style="color: var(--tn-blue);">help</span>
+                  <span style="color: var(--tn-comment);">Show available commands</span>
+                </div>
+                <div style="display: flex; gap: 0.75rem;">
+                  <span style="color: var(--tn-blue);">about</span>
+                  <span style="color: var(--tn-comment);">Display about info</span>
+                </div>
+                <div style="display: flex; gap: 0.75rem;">
+                  <span style="color: var(--tn-blue);">projects</span>
+                  <span style="color: var(--tn-comment);">List all projects</span>
+                </div>
+                <div style="display: flex; gap: 0.75rem;">
+                  <span style="color: var(--tn-blue);">skills</span>
+                  <span style="color: var(--tn-comment);">Show skills</span>
+                </div>
+                <div style="display: flex; gap: 0.75rem;">
+                  <span style="color: var(--tn-blue);">experience</span>
+                  <span style="color: var(--tn-comment);">View work experience</span>
+                </div>
+                <div style="display: flex; gap: 0.75rem;">
+                  <span style="color: var(--tn-blue);">clear</span>
+                  <span style="color: var(--tn-comment);">Clear terminal</span>
+                </div>
+                <div style="display: flex; gap: 0.75rem;">
+                  <span style="color: var(--tn-blue);">ls</span>
+                  <span style="color: var(--tn-comment);">List files</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: var(--tn-bg-dark); border: 1px solid var(--tn-border); border-radius: 0.75rem; padding: 1.5rem;">
+            <h2 style="color: var(--tn-blue); font-size: 1.25rem; font-weight: 600; margin: 0 0 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+              <span>🔄</span> Toggle Views
+            </h2>
+            <p style="color: var(--tn-fg); margin: 0 0 1rem 0; line-height: 1.7;">
+              Use the <strong style="color: var(--tn-purple);">Preview/Source</strong> toggle in the editor to switch between:
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+              <div>
+                <div style="color: var(--tn-blue); font-weight: 600; margin-bottom: 0.25rem;">📝 Source View</div>
+                <div style="color: var(--tn-comment); font-size: 0.875rem;">Syntax-highlighted source code</div>
+              </div>
+              <div>
+                <div style="color: var(--tn-green); font-weight: 600; margin-bottom: 0.25rem;">👁️ Preview View</div>
+                <div style="color: var(--tn-comment); font-size: 0.875rem;">Rendered/formatted content</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--tn-border); text-align: center; color: var(--tn-comment); font-size: 0.875rem;">
+            <div style="margin-bottom: 0.5rem;">Built with</div>
+            <div style="display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap;">
+              <span style="background: var(--tn-bg-highlight); color: var(--tn-blue); padding: 0.25rem 0.75rem; border-radius: 0.25rem; border: 1px solid var(--tn-border);">React</span>
+              <span style="background: var(--tn-bg-highlight); color: var(--tn-blue); padding: 0.25rem 0.75rem; border-radius: 0.25rem; border: 1px solid var(--tn-border);">TypeScript</span>
+              <span style="background: var(--tn-bg-highlight); color: var(--tn-blue); padding: 0.25rem 0.75rem; border-radius: 0.25rem; border: 1px solid var(--tn-border);">Tailwind CSS</span>
+              <span style="background: var(--tn-bg-highlight); color: var(--tn-purple); padding: 0.25rem 0.75rem; border-radius: 0.25rem; border: 1px solid var(--tn-border);">Tokyo Night</span>
+            </div>
+          </div>
+        </div>
+      `
+    }
+  ]
+};
