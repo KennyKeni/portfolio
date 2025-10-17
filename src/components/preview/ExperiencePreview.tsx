@@ -1,4 +1,4 @@
-import { Briefcase, Building2, Calendar, CircleCheck } from 'lucide-react';
+import { Briefcase, Building2, Calendar, ChevronRight } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio';
 import { Card } from '@/components/ui/card';
 
@@ -43,7 +43,7 @@ export function ExperiencePreview() {
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
                 {exp.achievements.map((achievement, achIndex) => (
                   <div key={achIndex} style={{ display: 'flex', gap: '0.75rem', alignItems: 'start' }}>
-                    <CircleCheck size={16} style={{ color: 'var(--tn-green)', marginTop: '0.2rem', flexShrink: '0' }} />
+                    <ChevronRight size={20} style={{ color: 'var(--tn-green)', marginTop: '0.1rem', flexShrink: '0' }} />
                     <p style={{ color: 'var(--tn-fg)', margin: '0', lineHeight: '1.6', fontSize: '0.9rem' }}>
                       {achievement}
                     </p>
