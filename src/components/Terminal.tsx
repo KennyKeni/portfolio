@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { Terminal as TerminalIcon } from 'lucide-react';
-import { ScrollArea } from './ui/scroll-area';
 import { Separator } from './ui/separator';
 import { useTerminal } from '@/hooks/useTerminal';
 import type { PortfolioData } from '@/types/portfolio';
@@ -16,11 +15,11 @@ export function Terminal({ portfolioData, onFileOpen }: TerminalProps) {
     onFileOpen,
   });
 
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollViewportRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    if (scrollViewportRef.current) {
+      scrollViewportRef.current.scrollTop = scrollViewportRef.current.scrollHeight;
     }
   }, [lines]);
 
@@ -41,10 +40,10 @@ export function Terminal({ portfolioData, onFileOpen }: TerminalProps) {
 
       <Separator className="bg-[var(--tn-border)]" />
 
-      <ScrollArea className="flex-1">
+      <div className="flex-1 relative overflow-hidden">
         <div
-          ref={scrollRef}
-          className="p-4 font-mono text-sm cursor-text"
+          ref={scrollViewportRef}
+          className="absolute inset-0 overflow-y-auto p-4 font-mono text-sm cursor-text"
           onClick={focusInput}
           style={{ color: 'var(--tn-fg)' }}
         >
@@ -80,7 +79,7 @@ export function Terminal({ portfolioData, onFileOpen }: TerminalProps) {
             />
           </form>
         </div>
-      </ScrollArea>
+      </div>
     </div>
   );
 }
