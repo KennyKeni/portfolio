@@ -9,6 +9,7 @@ import { useFileSystem } from '@/hooks/useFileSystem';
 import { useResizable } from '@/hooks/useResizable';
 import { useHorizontalResizable } from '@/hooks/useHorizontalResizable';
 import { cn } from '@/lib/utils';
+import { isMobile } from '@/lib/breakpoints';
 import type { FileNode } from '@/types/portfolio';
 
 export function IDELayout() {
@@ -43,7 +44,7 @@ export function IDELayout() {
 
   const handleFileSelect = (node: FileNode) => {
     openFile(node);
-    if (window.innerWidth < 768) {
+    if (isMobile()) {
       setIsFileBarVisible(false);
     }
   };

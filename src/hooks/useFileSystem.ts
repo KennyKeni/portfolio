@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import type { FileNode, TabItem } from '@/types/portfolio';
+import { isMobile } from '@/lib/breakpoints';
 
 export function useFileSystem(fileTree: FileNode) {
   const [tabs, setTabs] = useState<TabItem[]>([]);
@@ -66,6 +67,12 @@ export function useFileSystem(fileTree: FileNode) {
 
       setActiveTabId(newTab.id);
       setSelectedFileId(node.id);
+
+      // On mobile, replace all tabs with just the new tab
+      if (isMobile()) {
+        return [newTab];
+      }
+
       return [...prevTabs, newTab];
     });
   }, []);
