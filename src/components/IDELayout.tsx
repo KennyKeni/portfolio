@@ -125,7 +125,7 @@ export function IDELayout() {
           </div>
 
           <div
-            className={cn('relative group', isResizing && 'select-none')}
+            className={cn('relative group hidden md:block', isResizing && 'select-none')}
             onMouseDown={handleMouseDown}
             style={{
               cursor: 'ns-resize',
@@ -141,7 +141,7 @@ export function IDELayout() {
             </div>
           </div>
 
-          <div className="flex-shrink-0 border-t" style={{ borderColor: 'var(--tn-border)', height: `${terminalHeight}px` }}>
+          <div className="flex-shrink-0 border-t hidden md:block" style={{ borderColor: 'var(--tn-border)', height: `${terminalHeight}px` }}>
             <Terminal portfolioData={portfolioData} onFileOpen={openFileByName} />
           </div>
         </div>

@@ -4,7 +4,9 @@ import type { TabItem, ViewMode } from '@/types/portfolio';
 import { Tab } from './ui/Tab';
 import { Switch } from './ui/switch';
 import { ScrollArea } from './ui/scroll-area';
-import { highlightCode, parseMarkdown } from '@/lib/syntax-highlighter';
+import { parseMarkdown } from '@/lib/syntax-highlighter';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 interface CodeEditorProps {
   tabs: TabItem[];
@@ -52,6 +54,13 @@ export function CodeEditor({ tabs, activeTabId, onTabChange, onTabClose, onFileO
 
   const activeTab = tabs.find((tab) => tab.id === activeTabId);
 
+  // Initialize view mode for new tabs
+  useEffect(() => {
+    if (activeTab && viewModes[activeTab.id] === undefined) {
+      setViewModes((prev) => ({ ...prev, [activeTab.id]: 'raw' }));
+    }
+  }, [activeTab, viewModes]);
+
   const toggleViewMode = () => {
     if (!activeTab) return;
 
@@ -79,7 +88,6 @@ export function CodeEditor({ tabs, activeTabId, onTabChange, onTabClose, onFileO
     }
 
     const viewMode = getViewMode(activeTab.id);
-    const lines = activeTab.content.split('\n');
 
     if (viewMode === 'raw') {
       if (activeTab.previewComponent) {
@@ -118,38 +126,59 @@ export function CodeEditor({ tabs, activeTabId, onTabChange, onTabClose, onFileO
       );
     }
 
-    return (
-      <div className="flex absolute inset-0" style={{ cursor: 'text' }}>
-        <div
-          className="flex-shrink-0 py-4 text-center select-none"
-          style={{
-            backgroundColor: 'var(--tn-bg-dark)',
-            color: 'var(--tn-comment)',
-            borderRight: '1px solid var(--tn-border)',
-            width: '3rem',
-          }}
-        >
-          {lines.map((_, index) => (
-            <div key={index} className="text-xs leading-6 font-mono px-2">
-              {index + 1}
-            </div>
-          ))}
-        </div>
+    // Map language names to Prism-supported languages
+    const languageMap: Record<string, string> = {
+      'typescript': 'tsx',
+      'tsx': 'tsx',
+      'python': 'python',
+      'json': 'json',
+      'markdown': 'markdown',
+      'go': 'go',
+      'golang': 'go',
+    };
 
-        <div className="flex-1 py-4 px-4 overflow-x-auto">
-          <pre className="text-sm font-mono">
-            {lines.map((line, index) => (
-              <div key={index} className="leading-6">
-                <code
-                  dangerouslySetInnerHTML={{
-                    __html: highlightCode(line, activeTab.language) || '&nbsp;',
-                  }}
-                />
-              </div>
-            ))}
-          </pre>
-        </div>
-      </div>
+    const prismLanguage = languageMap[activeTab.language.toLowerCase()] || 'tsx';
+
+    return (
+      <SyntaxHighlighter
+            language={prismLanguage}
+            style={vscDarkPlus}
+            useInlineStyles={true}
+            showLineNumbers={true}
+            wrapLines={true}
+            lineNumberStyle={{
+              minWidth: '3rem',
+              paddingRight: '0.5rem',
+              paddingLeft: '0.5rem',
+              color: '#565f89',
+              textAlign: 'right' as const,
+              userSelect: 'none' as const,
+              display: 'inline-block',
+            }}
+            lineProps={{
+              style: { display: 'block' }
+            }}
+            PreTag={({ children, ...props }) => (
+              <pre {...props} style={{ margin: 0, padding: 0, backgroundColor: 'transparent' }}>
+                {children}
+              </pre>
+            )}
+            customStyle={{
+              margin: 0,
+              padding: 0,
+              backgroundColor: 'transparent',
+              fontSize: '0.875rem',
+              lineHeight: '1.5rem',
+            }}
+            codeTagProps={{
+              style: {
+                fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
+                padding: 0,
+              }
+            }}
+          >
+            {activeTab.content}
+          </SyntaxHighlighter>
     );
   };
 
@@ -210,8 +239,8 @@ export function CodeEditor({ tabs, activeTabId, onTabChange, onTabClose, onFileO
         )}
       </div>
 
-      <ScrollArea className="flex-1 min-h-0">
-        <div ref={contentRef} className="min-h-full">{renderContent()}</div>
+      <ScrollArea className="flex-1 min-h-0 code-editor-scroll">
+        <div ref={contentRef} style={{ height: '100%' }}>{renderContent()}</div>
       </ScrollArea>
     </div>
   );

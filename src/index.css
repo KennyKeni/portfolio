@@ -139,4 +139,27 @@
     scrollbar-width: thin;
     scrollbar-color: var(--tn-comment) var(--tn-bg-dark);
   }
+
+  /* Syntax highlighter gutter background - attach to scroll area which is guaranteed full height */
+  .code-editor-scroll {
+    position: relative;
+  }
+
+  .code-editor-scroll::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 3rem;
+    background-color: #16161e;
+    border-right: 1px solid #414868;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .code-editor-scroll [data-radix-scroll-area-viewport] {
+    position: relative;
+    z-index: 2;
+  }
 }

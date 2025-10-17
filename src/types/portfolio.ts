@@ -1,6 +1,6 @@
 export type FileType = 'file' | 'folder';
 
-export type FileExtension = '.md' | '.ts' | '.tsx' | '.json' | '.js' | '';
+export type FileExtension = '.md' | '.ts' | '.tsx' | '.json' | '.js' | '.py' | '';
 
 export interface FileNode {
   id: string;
@@ -21,6 +21,8 @@ export interface Project {
   link?: string;
   github?: string;
   highlights: string[];
+  fileExtension?: '.tsx' | '.py'; // File extension for the project file in the IDE
+  language?: 'typescript' | 'python'; // Language for syntax highlighting
 }
 
 export interface Experience {

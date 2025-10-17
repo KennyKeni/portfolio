@@ -1,4 +1,4 @@
-import type { PortfolioData, FileNode } from '@/types/portfolio';
+import type { PortfolioData, FileNode, FileExtension } from '@/types/portfolio';
 import { AboutPreview, SkillsPreview, ExperiencePreview, ReadmePreview, ProjectsIndexPreview } from '@/components/preview';
 import { createProjectPreviewComponent } from '@/components/preview/ProjectPreviewWrapper';
 
@@ -24,10 +24,12 @@ export const portfolioData: PortfolioData = {
         'Developed agentic RAG system with semantic search, hybrid search, and reranking capabilities',
         'Implemented vector search using Qdrant for improved retrieval accuracy',
         'Deployed dockerized FastAPI backend on VPS, reducing operating costs by 60%'
-      ]
+      ],
+      fileExtension: '.py',
+      language: 'python'
     },
     {
-      name: 'Pokemon Wikipedia Website',
+      name: 'Pokemon Wiki Website',
       description: 'Fully responsive Pokedex web application with scalable backend architecture and optimized caching.',
       technologies: ['TypeScript', 'React', 'NestJS', 'PostgreSQL', 'Node.js', 'Tailwind CSS', 'Redis'],
       github: 'https://github.com/keni344/pokemon-wiki',
@@ -170,7 +172,7 @@ ${portfolioData.projects.map((project, index) => `  {
     id: ${index},
     name: "${project.name}",
     description: "${project.description}",
-    file: "./${project.name.toLowerCase().replace(/\s+/g, '-')}.tsx"
+    file: "./${project.name.toLowerCase().replace(/\s+/g, '-')}${project.fileExtension || '.tsx'}"
   }`).join(',\n')}
 ];
 
@@ -180,10 +182,10 @@ export { ${portfolioData.projects.map(p => `${p.name.replace(/\s+/g, '')}Project
         },
         ...portfolioData.projects.map((project, index) => ({
           id: `project-${index}`,
-          name: `${project.name.toLowerCase().replace(/\s+/g, '-')}.tsx`,
+          name: `${project.name.toLowerCase().replace(/\s+/g, '-')}${project.fileExtension || '.tsx'}`,
           type: 'file' as const,
-          extension: '.tsx' as const,
-          language: 'typescript',
+          extension: (project.fileExtension || '.tsx') as FileExtension,
+          language: project.language || 'typescript',
           content: `export const ${project.name.replace(/\s+/g, '')}Project = {
   name: "${project.name}",
   description: "${project.description}",
