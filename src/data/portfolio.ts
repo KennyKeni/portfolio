@@ -19,7 +19,7 @@ export const portfolioData: PortfolioData = {
       name: 'Agentic RAG System',
       description: 'A near real-time agentic RAG FastAPI backend with advanced retrieval techniques for accurate question answering.',
       technologies: ['Python', 'GoLang', 'FastAPI', 'Llamaindex', 'Qdrant', 'SqlAlchemy', 'Docker'],
-      github: 'https://github.com/keni344/agentic-rag',
+      github: 'https://github.com/KennyKeni/autumn',
       highlights: [
         'Developed agentic RAG system with semantic search, hybrid search, and reranking capabilities',
         'Implemented vector search using Qdrant for improved retrieval accuracy',
