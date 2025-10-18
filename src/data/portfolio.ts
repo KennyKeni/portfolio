@@ -296,7 +296,7 @@ export const getAllSkills = (): string[] => {
       language: 'markdown',
       content: `# Portfolio
 
-Welcome to my portfolio! This is an IDE-themed portfolio website built with React, TypeScript, and Tailwind CSS.
+Hi! My name is Kenny, a 4th year at Georgia Tech pursuing a concurrent B.S./M.S. in Computer Science with a 4.0 GPA. I'm passionate about building scalable systems and machine learning applications.
 
 ## Navigation
 
