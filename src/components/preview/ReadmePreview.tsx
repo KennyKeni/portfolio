@@ -10,7 +10,7 @@ export function ReadmePreview() {
           Welcome to My Portfolio
         </h1>
         <p style={{ color: 'var(--tn-fg)', fontSize: '1.125rem', margin: '0', lineHeight: '1.7' }}>
-          An IDE-themed portfolio website built with React, TypeScript, and Tailwind CSS
+          Hi! My name is Kenny, a 4th year at Georgia Tech pursuing a concurrent B.S./M.S. in Computer Science with a 4.0 GPA. I'm passionate about building scalable systems and machine learning applications.
         </p>
       </Card>
 
