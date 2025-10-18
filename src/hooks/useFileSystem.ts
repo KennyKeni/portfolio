@@ -6,7 +6,6 @@ export function useFileSystem(fileTree: FileNode) {
   const [tabs, setTabs] = useState<TabItem[]>([]);
   const [activeTabId, setActiveTabId] = useState<string | null>(null);
   const [selectedFileId, setSelectedFileId] = useState<string | null>(null);
-  const [isNavigatingFromHistory, setIsNavigatingFromHistory] = useState(false);
 
   const findFileByName = useCallback(
     (fileName: string, node: FileNode = fileTree): FileNode | null => {
@@ -158,15 +157,12 @@ export function useFileSystem(fileTree: FileNode) {
 
       if (match) {
         const fileName = decodeURIComponent(match[1]);
-        setIsNavigatingFromHistory(true);
 
         // Find and open the file from the URL
         const file = findFileByName(fileName);
         if (file) {
           openFile(file, true);
         }
-
-        setIsNavigatingFromHistory(false);
       }
     };
 
