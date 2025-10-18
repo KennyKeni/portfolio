@@ -10,7 +10,7 @@ export const portfolioData: PortfolioData = {
     email: 'linkenny777@gmail.com',
     github: 'kennykeni',
     linkedin: 'kennylin344',
-    website: 'https://yourwebsite.com'
+    website: 'https://kennykeni.com'
   },
 
   projects: [

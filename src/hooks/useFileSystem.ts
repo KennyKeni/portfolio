@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import type { FileNode, TabItem } from '@/types/portfolio';
 import { isMobile } from '@/lib/breakpoints';
 
@@ -6,6 +6,7 @@ export function useFileSystem(fileTree: FileNode) {
   const [tabs, setTabs] = useState<TabItem[]>([]);
   const [activeTabId, setActiveTabId] = useState<string | null>(null);
   const [selectedFileId, setSelectedFileId] = useState<string | null>(null);
+  const [isNavigatingFromHistory, setIsNavigatingFromHistory] = useState(false);
 
   const findFileByName = useCallback(
     (fileName: string, node: FileNode = fileTree): FileNode | null => {
@@ -43,7 +44,7 @@ export function useFileSystem(fileTree: FileNode) {
     [fileTree]
   );
 
-  const openFile = useCallback((node: FileNode) => {
+  const openFile = useCallback((node: FileNode, skipHistoryUpdate = false) => {
     if (node.type !== 'file' || !node.content) return;
 
     setTabs((prevTabs) => {
@@ -52,6 +53,14 @@ export function useFileSystem(fileTree: FileNode) {
       if (existingTab) {
         setActiveTabId(existingTab.id);
         setSelectedFileId(node.id);
+
+        // Update URL hash unless we're navigating from history
+        // Also skip if the URL already matches (prevents duplicate history entries)
+        const currentHash = `#file=${encodeURIComponent(node.name)}`;
+        if (!skipHistoryUpdate && window.location.hash !== currentHash) {
+          window.history.pushState(null, '', currentHash);
+        }
+
         return prevTabs;
       }
 
@@ -67,6 +76,13 @@ export function useFileSystem(fileTree: FileNode) {
 
       setActiveTabId(newTab.id);
       setSelectedFileId(node.id);
+
+      // Update URL hash unless we're navigating from history
+      // Also skip if the URL already matches (prevents duplicate history entries)
+      const currentHash = `#file=${encodeURIComponent(node.name)}`;
+      if (!skipHistoryUpdate && window.location.hash !== currentHash) {
+        window.history.pushState(null, '', currentHash);
+      }
 
       // On mobile, replace all tabs with just the new tab
       if (isMobile()) {
@@ -123,7 +139,51 @@ export function useFileSystem(fileTree: FileNode) {
   const changeTab = useCallback((tabId: string) => {
     setActiveTabId(tabId);
     setSelectedFileId(tabId);
-  }, []);
+
+    // Update URL hash when changing tabs (only if different)
+    const tab = tabs.find(t => t.id === tabId);
+    if (tab) {
+      const currentHash = `#file=${encodeURIComponent(tab.name)}`;
+      if (window.location.hash !== currentHash) {
+        window.history.pushState(null, '', currentHash);
+      }
+    }
+  }, [tabs]);
+
+  // Listen for browser back/forward navigation
+  useEffect(() => {
+    const handlePopState = () => {
+      const hash = window.location.hash;
+      const match = hash.match(/#file=(.+)/);
+
+      if (match) {
+        const fileName = decodeURIComponent(match[1]);
+        setIsNavigatingFromHistory(true);
+
+        // Find and open the file from the URL
+        const file = findFileByName(fileName);
+        if (file) {
+          openFile(file, true);
+        }
+
+        setIsNavigatingFromHistory(false);
+      }
+    };
+
+    // Handle initial load from URL
+    const hash = window.location.hash;
+    const match = hash.match(/#file=(.+)/);
+    if (match) {
+      const fileName = decodeURIComponent(match[1]);
+      const file = findFileByName(fileName);
+      if (file) {
+        openFile(file, true);
+      }
+    }
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [findFileByName, openFile]);
 
   return {
     tabs,
